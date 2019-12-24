@@ -3,11 +3,11 @@
 A Github Action to automatically bump and tag master, on merge, with the latest [SemVer](https://semver.org/) formatted version.
 
 Given a version number `MAJOR.MINOR.PATCH-PREREL+BUILD`, increment the:
-* MAJOR version when you make incompatible API changes,
-* MINOR version when you add functionality in a backwards compatible manner, and
-* PATCH version when you make backwards compatible bug fixes.
-* PREREL pre-release metadata (e.g. `SNAPSHOT`).
-* BUILD build metadata.
+* **MAJOR** version when you make incompatible API changes,
+* **MINOR** version when you add functionality in a backwards compatible manner, and
+* **PATCH** version when you make backwards compatible bug fixes.
+* **PREREL** *(optional)* pre-release metadata (e.g. `SNAPSHOT`).
+* **BUILD** build metadata.
 
 ### Usage
 Put version.properties file to project root.
@@ -70,9 +70,9 @@ jobs:
 * Commit some changes
 * Either push to master or open a PR
 * On push (or merge) to `master`, the action will:
-  * Get latest tag for `MAJOR.MINOR.PATCH-PREREL*`
-  * Bump build number.
-  * Pushes tag to github
+  * get latest tag for `MAJOR.MINOR.PATCH*`;
+  * bump build number;
+  * push tag to github.
 
 ### Credits
 

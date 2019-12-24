@@ -12,10 +12,17 @@ major=$(prop 'MAJOR')
 minor=$(prop 'MINOR')
 patch=$(prop 'PATCH')
 prerel=$(prop 'PREREL')
-version="$major.$minor.$patch-$prerel"
+
+if [ -z "$prerel" ]
+then
+    version="$major.$minor.$patch"
+else
+    version="$major.$minor.$patch-$prerel"
+fi
+echo "Version: $version"
 compare=$(semver compare "$version" "$version")
 if [ ! "$compare" == "0" ]; then
-    echo "Wrong version $version. Skipping..."
+    echo "Wrong version. Skipping..."
     exit 0
 fi
 
@@ -23,7 +30,7 @@ fi
 git fetch --tags
 
 # get latest tag
-tag_pattern="$version*"
+tag_pattern="$major.$minor.$patch*"
 tag_commit=$(git rev-list --tags="$tag_pattern" --max-count=1)
 echo "Latest tagged commit: $tag_commit"
 if [ -n "$tag_commit" ]; then
