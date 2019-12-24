@@ -56,7 +56,7 @@ else
     # will default to 1 if it was not a number
     build=$(semver get build "$tag")
     build=$((build+1))
-    new=$(semver bump build $build "$tag")
+    new=$(semver bump build $build "$version")
 fi
 
 # prefix with 'v'
