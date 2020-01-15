@@ -31,7 +31,7 @@ git fetch --tags
 
 # get latest tag
 tag_pattern="$major.$minor.$patch*"
-tag_commit=$(git rev-list --tags="$tag_pattern" --max-count=1)
+tag_commit=$(git rev-list --tags="$tag_pattern" --max-count=1 --date-order)
 echo "Latest tagged commit: $tag_commit"
 if [ -n "$tag_commit" ]; then
     tag=$(git describe --tags "$tag_commit")
